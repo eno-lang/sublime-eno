@@ -1,0 +1,40 @@
+%YAML 1.2
+---
+name: eno
+file_extensions: [eno]
+scope: text.eno
+
+contexts:
+  main:
+    - match: '>'
+      push: comment
+      scope: punctuation.definition.comment.eno
+    - match: '--(?!-)'
+      push: block
+      scope: punctuation.definition.block.name.begin.eno
+    - match: '-(?!-)'
+      push: list_item
+      scope: punctuation.definition.list.value.eno
+    - match: '#(?!#)'
+      push: section_first_level
+      scope: punctuation.definition.section.first-level.name.eno
+
+  block:
+    - meta_scope: variable.other.name.eno
+    - match: '\n'
+      pop: true
+
+  comment:
+    - meta_scope: comment.line.angled-bracket.eno
+    - match: '\n'
+      pop: true
+
+  list_item:
+    - meta_scope:  value.eno
+    - match: '\n'
+      pop: true
+
+  section_first_level:
+    - meta_scope:  variable.other.section.first-level.name.eno
+    - match: '\n'
+      pop: true

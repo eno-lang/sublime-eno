@@ -1,0 +1,10 @@
+{
+    "rules":
+    [
+        {
+            "name": "Section first level",
+            "scope": "section.first-level.eno",
+            "foreground": "#ffb500"
+        }
+    ]
+}
