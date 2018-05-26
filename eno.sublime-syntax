@@ -4,57 +4,177 @@ name: eno
 file_extensions: [eno]
 scope: text.eno
 
-variables:
-  ws: '[^\n\S]*'
-
 contexts:
   main:
-    - match: '[^>\-#\\|`:=<][^:=<]*{{ws}}:{{ws}}$'
-      scope: red
-    - match: '^{{ws}}(>).*$'
+    # Name
+    # name:
+    - match: '^\s*(?![>\-#=:*\\|`])([^<=:]+?)\s*(:)\s*$'
       captures:
-        1: punctuation.definition.comment.eno
+        1: name.eno
+        2: operator.name.eno
+
+    # Dictionary Entry
+    # name = value
+    - match: '^\s*(?![>\-#\\|`])([^<=:]+?)\s*(=)\s*(.+?)?\s*$'
+      captures:
+        1: name.eno
+        2: operator.entry.eno
+        3: value.eno
+
+    # Comment
+    # > text
+    - match: '^\s*(>)\s*(.+?)?\s*$'
+      captures:
+        1: operator.comment.eno
+        2: text.comment.eno
       scope: comment.eno
-    - match: '(-{2,})(?!-){{ws}}(\S[^\n]*?){{ws}}$'
+
+    # Field
+    # name: value
+    - match: '^\s*(?![>\-#\\|`])([^<=:]+?)\s*(:)\s*(\S.*?)\s*$'
+      captures:
+        1: name.eno
+        2: operator.name.eno
+        3: value.eno
+
+    # Block
+    # -- name
+    - match: '(-{2,})(?!-)\s*(\S[^\n]*?)\s*$'
       push: block
       scope: block.boundary.eno
-    - match: '-(?!-)'
-      push: list-item
-      scope: operator.list.item.eno
-    - match: '#(?!#)'
-      push: section-1st
-      scope: punctuation.definition.section.1st.name.eno
-    - match: '##(?!#)'
-      push: section-2nd
-      scope: punctuation.definition.section.2nd.name.eno
-    - match: '#{3,0}(?!#)'
-      push: section-3rd-plus
-      scope: punctuation.definition.section.3rd.name.eno
-    - match: '(\||\\).*$'
+
+    # List Item
+    # - value
+    - match: '^\s*(-)(?!-)\s*(.+?)?\s*$'
       captures:
-        1: punctuation.append.eno
+        1: operator.item.eno
+        2: value.item.eno
+
+    # Section 1st
+    # # name [[<]< template]
+    - match: '^\s*(#)(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section.1st.eno
+      captures:
+        1: operator.section.1st.eno
+        2: name.section.1st.eno
+        3: operator.copy.section.1st.eno
+        4: template.eno
+
+    # Section 2nd Plus
+    # ## name [[<]< template]
+    - match: '^\s*(##)(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section.2nd.eno
+      captures:
+        1: operator.section.2nd.eno
+        2: name.section.2nd.eno
+        3: operator.copy.section.2nd.eno
+        4: template.eno
+
+    # Section 3rd Plus
+    # ### name [[<]< template]
+    - match: '^\s*(#{3,})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section.3rd-plus.eno
+      captures:
+        1: operator.section.3rd-plus.eno
+        2: name.section.3rd-plus.eno
+        3: operator.copy.section.3rd-plus.eno
+        4: template.eno
+
+    # Append
+    # | value OR \ value
+    - match: '^\s*(\||\\)\s*(.+?)?\s*$'
+      captures:
+        1: operator.append.eno
+        2: append.value.eno
+
+    # Element Copy
+    # name < template
+    - match: '^\s*(?![>\-#\\|`])([^<=:]+?)\s*(<)\s*(\S.*?)\s*$'
+      captures:
+        1: .name.eno
+        2: operator.copy.eno
+        3: template.eno
+
+    # Escaped name
+    # `name`:
+    - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(:)\s*$'
+      captures:
+        1: operator.escape.eno
+        2: name.eno
+        3: operator.escape.eno
+        4: operator.name.eno
+
+    # Escaped name
+    # `name`:
+    - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(:)\s*(\S.*?)\s*$'
+      captures:
+        1: operator.escape.eno
+        2: name.eno
+        3: operator.escape.eno
+        4: operator.name.eno
+        5: value.eno
+
+    # Escaped Copy
+    # `name` < template
+    - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(<(?!<)|<<)\s*(\S.*?)\s*$'
+      captures:
+        1: operator.escape.eno
+        2: name.eno
+        3: operator.escape.eno
+        4: operator.copy.eno
+        5: template.eno
+
+    # Escaped Dictionary Entry
+    # `name` = value
+    - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(=)\s*(.+?)?\s*$'
+      captures:
+        1: operator.escape.eno
+        2: name.eno
+        3: operator.escape.eno
+        4: operator.entry.eno
+        5: value.eno
+
+    # Escaped Section 1st
+    # # `name` [< template]
+    - match: '^\s*(#)(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section.1st.eno
+      captures:
+        1: operator.section.1st.eno
+        2: operator.escape.eno
+        3: name.section.1st.eno
+        4: operator.escape.eno
+        5: operator.copy.section.1st.eno
+        6: template.eno
+
+    # Escaped Section 2nd
+    # ## `name` [< template]
+    - match: '^\s*(##)(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section.2nd.eno
+      captures:
+        1: operator.section.2nd.eno
+        2: operator.escape.eno
+        3: name.section.2nd.eno
+        4: operator.escape.eno
+        5: operator.copy.section.2nd.eno
+        6: template.eno
+
+    # Escaped Section 3rd Plus
+    # ### `name` [< template]
+    - match: '^\s*(#{3,})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section.3rd-plus.eno
+      captures:
+        1: operator.section.3rd-plus.eno
+        2: operator.escape.eno
+        3: name.section.3rd-plus.eno
+        4: operator.escape.eno
+        5: operator.copy.section.3rd-plus.eno
+        6: template.eno
+
+    # Invalid
+    - match: ^.*$
+      scope: invalid.eno
 
   block:
-    - match: '^\1{{ws}}\2{{ws}}$'
+    - match: '^\1\s*\2\s*$'
       scope: block.boundary.eno
-      pop: true
-
-  list-item:
-    - meta_scope:  value.eno
-    - match: '\n'
-      pop: true
-
-  section-1st:
-    - meta_scope:  section.1st.eno
-    - match: '\n'
-      pop: true
-
-  section-2nd:
-    - meta_scope:  section.2nd.eno
-    - match: '\n'
-      pop: true
-
-  section-3rd-plus:
-    - meta_scope:  section.3rd-plus.eno
-    - match: '\n'
       pop: true

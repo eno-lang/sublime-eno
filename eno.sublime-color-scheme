@@ -3,12 +3,13 @@
   "globals": {
       "background": "#f5f2f0",
       "foreground": "#383a42",
-      "caret": "#383a42"
+      "caret": "#383a42",
+      "selection": "#dddddd"
   },
   "rules": [
     {
-      "name": "Append",
-      "scope": "punctuation.append.eno",
+      "name": "Append Operator",
+      "scope": "operator.append.eno",
       "foreground": "#ff2f95"
     },
     {
@@ -22,24 +23,60 @@
       "foreground": "#5c6370"
     },
     {
+      "name": "Copy Operator",
+      "scope": "operator.copy.eno",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Entry Operator",
+      "scope": "operator.entry.eno",
+      "foreground": "#c959e2"
+    },
+    {
+      "name": "Escape Operator",
+      "scope": "operator.escape.eno",
+      "foreground": "#98c379"
+    },
+    {
+      "name": "Invalid",
+      "scope": "invalid.eno",
+      "background": "#e05252",
+      "foreground": "white"
+    },
+    {
       "name": "Item operator",
-      "scope": "operator.list.item.eno",
+      "scope": "operator.item.eno",
       "foreground": "#ff2f95"
     },
     {
-      "name": "Section 1st level",
+      "name": "Name",
+      "scope": "name.eno",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Name Operator",
+      "scope": "operator.name.eno",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Section 1st",
       "scope": "section.1st.eno",
       "foreground": "#ffb500"
     },
     {
-      "name": "Section 2nd level",
+      "name": "Section 2nd",
       "scope": "section.2nd.eno",
       "foreground": "#ff3f00"
     },
     {
-      "name": "Section 3rd-plus level",
+      "name": "Section 3rd Plus",
       "scope": "section.3rd-plus.eno",
       "foreground": "#ff00ac"
+    },
+    {
+      "name": "Template",
+      "scope": "template.eno",
+      "foreground": "#b2d218"
     },
     {
       "name": "blue",
