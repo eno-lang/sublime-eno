@@ -1,10 +1,55 @@
 {
-    "rules":
-    [
-        {
-            "name": "Section first level",
-            "scope": "section.first-level.eno",
-            "foreground": "#ffb500"
-        }
-    ]
+  "name": "eno",
+  "globals": {
+      "background": "#f5f2f0",
+      "foreground": "#383a42",
+      "caret": "#383a42"
+  },
+  "rules": [
+    {
+      "name": "Append",
+      "scope": "punctuation.append.eno",
+      "foreground": "#ff2f95"
+    },
+    {
+      "name": "Block Boundary",
+      "scope": "block.boundary.eno",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Comment",
+      "scope": "comment.eno",
+      "foreground": "#5c6370"
+    },
+    {
+      "name": "Item operator",
+      "scope": "operator.list.item.eno",
+      "foreground": "#ff2f95"
+    },
+    {
+      "name": "Section 1st level",
+      "scope": "section.1st.eno",
+      "foreground": "#ffb500"
+    },
+    {
+      "name": "Section 2nd level",
+      "scope": "section.2nd.eno",
+      "foreground": "#ff3f00"
+    },
+    {
+      "name": "Section 3rd-plus level",
+      "scope": "section.3rd-plus.eno",
+      "foreground": "#ff00ac"
+    },
+    {
+      "name": "blue",
+      "scope": "blue",
+      "foreground": "blue"
+    },
+    {
+      "name": "red",
+      "scope": "red",
+      "foreground": "red"
+    }
+  ]
 }

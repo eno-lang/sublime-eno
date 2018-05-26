@@ -4,37 +4,57 @@ name: eno
 file_extensions: [eno]
 scope: text.eno
 
+variables:
+  ws: '[^\n\S]*'
+
 contexts:
   main:
-    - match: '>'
-      push: comment
-      scope: punctuation.definition.comment.eno
-    - match: '--(?!-)'
+    - match: '[^>\-#\\|`:=<][^:=<]*{{ws}}:{{ws}}$'
+      scope: red
+    - match: '^{{ws}}(>).*$'
+      captures:
+        1: punctuation.definition.comment.eno
+      scope: comment.eno
+    - match: '(-{2,})(?!-){{ws}}(\S[^\n]*?){{ws}}$'
       push: block
-      scope: punctuation.definition.block.name.begin.eno
+      scope: block.boundary.eno
     - match: '-(?!-)'
-      push: list_item
-      scope: punctuation.definition.list.value.eno
+      push: list-item
+      scope: operator.list.item.eno
     - match: '#(?!#)'
-      push: section_first_level
-      scope: punctuation.definition.section.first-level.name.eno
+      push: section-1st
+      scope: punctuation.definition.section.1st.name.eno
+    - match: '##(?!#)'
+      push: section-2nd
+      scope: punctuation.definition.section.2nd.name.eno
+    - match: '#{3,0}(?!#)'
+      push: section-3rd-plus
+      scope: punctuation.definition.section.3rd.name.eno
+    - match: '(\||\\).*$'
+      captures:
+        1: punctuation.append.eno
 
   block:
-    - meta_scope: variable.other.name.eno
-    - match: '\n'
+    - match: '^\1{{ws}}\2{{ws}}$'
+      scope: block.boundary.eno
       pop: true
 
-  comment:
-    - meta_scope: comment.line.angled-bracket.eno
-    - match: '\n'
-      pop: true
-
-  list_item:
+  list-item:
     - meta_scope:  value.eno
     - match: '\n'
       pop: true
 
-  section_first_level:
-    - meta_scope:  variable.other.section.first-level.name.eno
+  section-1st:
+    - meta_scope:  section.1st.eno
+    - match: '\n'
+      pop: true
+
+  section-2nd:
+    - meta_scope:  section.2nd.eno
+    - match: '\n'
+      pop: true
+
+  section-3rd-plus:
+    - meta_scope:  section.3rd-plus.eno
     - match: '\n'
       pop: true
