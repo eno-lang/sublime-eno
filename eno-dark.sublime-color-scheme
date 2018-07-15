@@ -1,0 +1,227 @@
+{
+  "name": "eno dark",
+  "globals": {
+    "background": "#181a12",
+    "foreground": "#c5c2c0",
+    "caret": "#c5c2c0",
+    "selection": "#333333"
+  },
+  "rules": [
+    {
+      "name": "Block operator",
+      "scope": "punctuation.definition.block",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Block name",
+      "scope": "entity.name.block",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Comment operator, Comment",
+      "scope": "punctuation.definition.comment, comment",
+      "foreground": "#5c6370"
+    },
+    {
+      "name": "Continuation operator",
+      "scope": "punctuation.definition.continuation",
+      "foreground": "#ff2f95"
+    },
+    {
+      "name": "Copy operator",
+      "scope": "punctuation.definition.name.template",
+      "foreground": "#b2d218"
+    },
+    {
+      "name": "Entry operator",
+      "scope": "punctuation.definition.name.entry",
+      "foreground": "#c959e2"
+    },
+    {
+      "name": "Entry escape operator",
+      "scope": "punctuation.definition.name.entry.escape",
+      "foreground": "#c959e2"
+    },
+    {
+      "name": "Entry name",
+      "scope": "variable.other.name.entry.eno",
+      "foreground": "#c959e2"
+    },
+    {
+      "name": "Invalid",
+      "scope": "invalid",
+      "background": "#e05252",
+      "foreground": "white"
+    },
+    {
+      "name": "Item operator",
+      "scope": "punctuation.definition.item",
+      "foreground": "#ff2f95"
+    },
+    {
+      "name": "Name",
+      "scope": "variable.other.name",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Name operator",
+      "scope": "punctuation.definition.name",
+      "foreground": "#ff5370"
+    },
+    {
+      "name": "Section 1 operator",
+      "scope": "punctuation.definition.section.1",
+      "foreground": "#ffb500"
+    },
+    {
+      "name": "Section 1 escape operator",
+      "scope": "punctuation.definition.section.1.escape",
+      "foreground": "#ffb500"
+    },
+    {
+      "name": "Section 1 name",
+      "scope": "entity.name.section.1",
+      "foreground": "#ffb500"
+    },
+    {
+      "name": "Section 1 copy operator",
+      "scope": "punctuation.definition.section.1.template",
+      "foreground": "#ffb500"
+    },
+    {
+      "name": "Section 1 template",
+      "scope": "entity.name.section.1.template",
+      "foreground": "#ffb500"
+    },
+    {
+      "name": "Section 2 operator",
+      "scope": "punctuation.definition.section.2",
+      "foreground": "#ff3f00"
+    },
+    {
+      "name": "Section 2 escape operator",
+      "scope": "punctuation.definition.section.2.escape",
+      "foreground": "#ff3f00"
+    },
+    {
+      "name": "Section 2 name",
+      "scope": "entity.name.section.2",
+      "foreground": "#ff3f00"
+    },
+    {
+      "name": "Section 2 copy operator",
+      "scope": "punctuation.definition.section.2.template",
+      "foreground": "#ff3f00"
+    },
+    {
+      "name": "Section 2 template",
+      "scope": "entity.name.section.2.template",
+      "foreground": "#ff3f00"
+    },
+    {
+      "name": "Section 3 operator",
+      "scope": "punctuation.definition.section.3",
+      "foreground": "#ff00ac"
+    },
+    {
+      "name": "Section 3 escape operator",
+      "scope": "punctuation.definition.section.3.escape",
+      "foreground": "#ff00ac"
+    },
+    {
+      "name": "Section 3 name",
+      "scope": "entity.name.section.3",
+      "foreground": "#ff00ac"
+    },
+    {
+      "name": "Section 3 copy operator",
+      "scope": "punctuation.definition.section.3.template",
+      "foreground": "#ff00ac"
+    },
+    {
+      "name": "Section 3 template",
+      "scope": "entity.name.section.3.template",
+      "foreground": "#ff00ac"
+    },
+    {
+      "name": "Section 4 operator",
+      "scope": "punctuation.definition.section.4",
+      "foreground": "#8e20ff"
+    },
+    {
+      "name": "Section 4 escape operator",
+      "scope": "punctuation.definition.section.4.escape",
+      "foreground": "#8e20ff"
+    },
+    {
+      "name": "Section 4 name",
+      "scope": "entity.name.section.4",
+      "foreground": "#8e20ff"
+    },
+    {
+      "name": "Section 4 copy operator",
+      "scope": "punctuation.definition.section.4.template",
+      "foreground": "#8e20ff"
+    },
+    {
+      "name": "Section 4 template",
+      "scope": "entity.name.section.4.template",
+      "foreground": "#8e20ff"
+    },
+    {
+      "name": "Section 5 operator",
+      "scope": "punctuation.definition.section.5",
+      "foreground": "#3a34ff"
+    },
+    {
+      "name": "Section 5 escape operator",
+      "scope": "punctuation.definition.section.5.escape",
+      "foreground": "#3a34ff"
+    },
+    {
+      "name": "Section 5 name",
+      "scope": "entity.name.section.5",
+      "foreground": "#3a34ff"
+    },
+    {
+      "name": "Section 5 copy operator",
+      "scope": "punctuation.definition.section.5.template",
+      "foreground": "#3a34ff"
+    },
+    {
+      "name": "Section 5 template",
+      "scope": "entity.name.section.5.template",
+      "foreground": "#3a34ff"
+    },
+    {
+      "name": "Section 6 operator",
+      "scope": "punctuation.definition.section.6",
+      "foreground": "#009dff"
+    },
+    {
+      "name": "Section 6 escape operator",
+      "scope": "punctuation.definition.section.6.escape",
+      "foreground": "#009dff"
+    },
+    {
+      "name": "Section 6 name",
+      "scope": "entity.name.section.6",
+      "foreground": "#009dff"
+    },
+    {
+      "name": "Section 6 copy operator",
+      "scope": "punctuation.definition.section.6.template",
+      "foreground": "#009dff"
+    },
+    {
+      "name": "Section 6 template",
+      "scope": "entity.name.section.6.template",
+      "foreground": "#009dff"
+    },
+    {
+      "name": "Template",
+      "scope": "variable.other.name.template",
+      "foreground": "#b2d218"
+    }
+  ]
+}
