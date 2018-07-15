@@ -6,175 +6,222 @@ scope: text.eno
 
 contexts:
   main:
-    # Name
     # name:
     - match: '^\s*(?![>\-#=:*\\|`])([^<=:]+?)\s*(:)\s*$'
       captures:
-        1: name.eno
-        2: operator.name.eno
+        1: variable.other.name.eno
+        2: punctuation.definition.name.operator.eno
 
-    # Dictionary Entry
     # name = value
     - match: '^\s*(?![>\-#\\|`])([^<=:]+?)\s*(=)\s*(.+?)?\s*$'
       captures:
-        1: name.eno
-        2: operator.entry.eno
-        3: value.eno
+        1: variable.other.name.eno
+        2: punctuation.definition.entry.operator.eno
+        3: string.unquoted.value.eno
 
-    # Comment
-    # > text
+    # > comment
     - match: '^\s*(>)\s*(.+?)?\s*$'
       captures:
-        1: operator.comment.eno
-        2: text.comment.eno
-      scope: comment.eno
+        1: punctuation.definition.comment.operator.eno
+      scope: comment.line.eno
 
-    # Field
     # name: value
     - match: '^\s*(?![>\-#\\|`])([^<=:]+?)\s*(:)\s*(\S.*?)\s*$'
       captures:
-        1: name.eno
-        2: operator.name.eno
-        3: value.eno
+        1: variable.other.name.eno
+        2: punctuation.definition.name.operator.eno
+        3: string.unquoted.value.eno
 
-    # Block
     # -- name
     - match: '(-{2,})(?!-)\s*(\S[^\n]*?)\s*$'
       push: block
-      scope: block.boundary.eno
+      captures:
+        1: punctuation.definition.block.operator.eno
+        2: variable.other.block.name.eno
 
-    # List Item
     # - value
     - match: '^\s*(-)(?!-)\s*(.+?)?\s*$'
       captures:
-        1: operator.item.eno
-        2: value.item.eno
+        1: punctuation.definition.item.operator.eno
+        2: string.unquoted.value.eno
 
-    # Section 1st
     # # name [[<]< template]
     - match: '^\s*(#)(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
-      scope: section.1st.eno
+      scope: section1.eno
       captures:
-        1: operator.section.1st.eno
-        2: name.section.1st.eno
-        3: operator.copy.section.1st.eno
-        4: template.eno
+        1: punctuation.definition.section.operator.eno
+        2: variable.other.section.name.eno
+        3: punctuation.definition.copy.operator.eno
+        4: variable.other.template.name.eno
 
-    # Section 2nd Plus
     # ## name [[<]< template]
-    - match: '^\s*(##)(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
-      scope: section.2nd.eno
+    - match: '^\s*(#{2})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section2.eno
       captures:
-        1: operator.section.2nd.eno
-        2: name.section.2nd.eno
-        3: operator.copy.section.2nd.eno
-        4: template.eno
+        1: punctuation.definition.section.operator.eno
+        2: variable.other.section.name.eno
+        3: punctuation.definition.copy.operator.eno
+        4: variable.other.template.name.eno
 
-    # Section 3rd Plus
     # ### name [[<]< template]
-    - match: '^\s*(#{3,})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
-      scope: section.3rd-plus.eno
+    - match: '^\s*(#{3})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section3.eno
       captures:
-        1: operator.section.3rd-plus.eno
-        2: name.section.3rd-plus.eno
-        3: operator.copy.section.3rd-plus.eno
-        4: template.eno
+        1: punctuation.definition.section.operator.eno
+        2: variable.other.section.name.eno
+        3: punctuation.definition.copy.operator.eno
+        4: variable.other.template.name.eno
 
-    # Append
+    # #### name [[<]< template]
+    - match: '^\s*(#{4})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section4.eno
+      captures:
+        1: punctuation.definition.section.operator.eno
+        2: variable.other.section.name.eno
+        3: punctuation.definition.copy.operator.eno
+        4: variable.other.template.name.eno
+
+    # ##### name [[<]< template]
+    - match: '^\s*(#{5})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section5.eno
+      captures:
+        1: punctuation.definition.section.operator.eno
+        2: variable.other.section.name.eno
+        3: punctuation.definition.copy.operator.eno
+        4: variable.other.template.name.eno
+
+    # ###### name [[<]< template]
+    - match: '^\s*(#{6,})(?!#)\s*([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section6.eno
+      captures:
+        1: punctuation.definition.section.operator.eno
+        2: variable.other.section.name.eno
+        3: punctuation.definition.copy.operator.eno
+        4: variable.other.template.name.eno
+
     # | value OR \ value
     - match: '^\s*(\||\\)\s*(.+?)?\s*$'
       captures:
-        1: operator.append.eno
-        2: append.value.eno
+        1: punctuation.definition.continuation.operator.eno
+        2: string.unquoted.value.eno
 
-    # Element Copy
     # name < template
     - match: '^\s*(?![>\-#\\|`])([^<=:]+?)\s*(<)\s*(\S.*?)\s*$'
       captures:
-        1: .name.eno
-        2: operator.copy.eno
-        3: template.eno
+        1: variable.other.name.eno
+        2: punctuation.definition.copy.operator.eno
+        3: variable.other.template.name.eno
 
-    # Escaped name
     # `name`:
     - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(:)\s*$'
       captures:
-        1: operator.escape.eno
-        2: name.eno
-        3: operator.escape.eno
-        4: operator.name.eno
+        1: punctuation.definition.escape.begin.operator.eno
+        2: variable.other.name.eno
+        3: punctuation.definition.escape.end.operator.eno
+        4: punctuation.definition.name.operator.eno
 
-    # Escaped name
-    # `name`:
+    # `name`: value
     - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(:)\s*(\S.*?)\s*$'
       captures:
-        1: operator.escape.eno
-        2: name.eno
-        3: operator.escape.eno
-        4: operator.name.eno
-        5: value.eno
+        1: punctuation.definition.escape.begin.operator.eno
+        2: variable.other.name.eno
+        3: punctuation.definition.escape.end.operator.eno
+        4: punctuation.definition.name.operator.eno
+        5: string.unquoted.value.eno
 
-    # Escaped Copy
     # `name` < template
     - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(<(?!<)|<<)\s*(\S.*?)\s*$'
       captures:
-        1: operator.escape.eno
-        2: name.eno
-        3: operator.escape.eno
-        4: operator.copy.eno
-        5: template.eno
+        1: punctuation.definition.escape.begin.operator.eno
+        2: variable.other.name.eno
+        3: punctuation.definition.escape.end.operator.eno
+        4: punctuation.definition.copy.operator.eno
+        5: variable.other.template.name.eno
 
-    # Escaped Dictionary Entry
     # `name` = value
     - match: '^\s*(`+)\s*((?:(?!\1).)+)\s*(\1)\s*(=)\s*(.+?)?\s*$'
       captures:
-        1: operator.escape.eno
-        2: name.eno
-        3: operator.escape.eno
-        4: operator.entry.eno
-        5: value.eno
+        1: punctuation.definition.escape.begin.operator.eno
+        2: variable.other.name.eno
+        3: punctuation.definition.escape.end.operator.eno
+        4: punctuation.definition.entry.operator.eno
+        5: string.unquoted.value.eno
 
-    # Escaped Section 1st
     # # `name` [< template]
     - match: '^\s*(#)(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
-      scope: section.1st.eno
+      scope: section1
       captures:
-        1: operator.section.1st.eno
-        2: operator.escape.eno
-        3: name.section.1st.eno
-        4: operator.escape.eno
-        5: operator.copy.section.1st.eno
-        6: template.eno
+        1: punctuation.definition.section.operator.eno
+        2: punctuation.definition.escape.begin.operator.eno
+        3: variable.other.section.name.eno
+        4: punctuation.definition.escape.end.operator.eno
+        5: punctuation.definition.copy.operator.eno
+        6: variable.other.template.name.eno
 
-    # Escaped Section 2nd
     # ## `name` [< template]
-    - match: '^\s*(##)(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
-      scope: section.2nd.eno
+    - match: '^\s*(#{2})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section2
       captures:
-        1: operator.section.2nd.eno
-        2: operator.escape.eno
-        3: name.section.2nd.eno
-        4: operator.escape.eno
-        5: operator.copy.section.2nd.eno
-        6: template.eno
+        1: punctuation.definition.section.operator.eno
+        2: punctuation.definition.escape.begin.operator.eno
+        3: variable.other.section.name.eno
+        4: punctuation.definition.escape.end.operator.eno
+        5: punctuation.definition.copy.operator.eno
+        6: variable.other.template.name.eno
 
-    # Escaped Section 3rd Plus
     # ### `name` [< template]
-    - match: '^\s*(#{3,})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
-      scope: section.3rd-plus.eno
+    - match: '^\s*(#{3})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section3
       captures:
-        1: operator.section.3rd-plus.eno
-        2: operator.escape.eno
-        3: name.section.3rd-plus.eno
-        4: operator.escape.eno
-        5: operator.copy.section.3rd-plus.eno
-        6: template.eno
+        1: punctuation.definition.section.operator.eno
+        2: punctuation.definition.escape.begin.operator.eno
+        3: variable.other.section.name.eno
+        4: punctuation.definition.escape.end.operator.eno
+        5: punctuation.definition.copy.operator.eno
+        6: variable.other.template.name.eno
+
+    # #### `name` [< template]
+    - match: '^\s*(#{4})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section4
+      captures:
+        1: punctuation.definition.section.operator.eno
+        2: punctuation.definition.escape.begin.operator.eno
+        3: variable.other.section.name.eno
+        4: punctuation.definition.escape.end.operator.eno
+        5: punctuation.definition.copy.operator.eno
+        6: variable.other.template.name.eno
+
+    # ##### `name` [< template]
+    - match: '^\s*(#{5})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section5
+      captures:
+        1: punctuation.definition.section.operator.eno
+        2: punctuation.definition.escape.begin.operator.eno
+        3: variable.other.section.name.eno
+        4: punctuation.definition.escape.end.operator.eno
+        5: punctuation.definition.copy.operator.eno
+        6: variable.other.template.name.eno
+
+    # ###### `name` [< template]
+    - match: '^\s*(#{6,})(?!#)\s*(`+)\s*((?:(?!\2).)+)\s*(\2)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+      scope: section6
+      captures:
+        1: punctuation.definition.section.operator.eno
+        2: punctuation.definition.escape.begin.operator.eno
+        3: variable.other.section.name.eno
+        4: punctuation.definition.escape.end.operator.eno
+        5: punctuation.definition.copy.operator.eno
+        6: variable.other.template.name.eno                
 
     # Invalid
     - match: ^.*$
-      scope: invalid.eno
+      scope: invalid.illegal.eno
 
   block:
-    - match: '^\1\s*\2\s*$'
-      scope: block.boundary.eno
+    - match: '^\s*(\1)\s*(\2)\s*$'
+      captures:
+        1: punctuation.definition.block.operator.eno
+        2: variable.other.block.name.eno
       pop: true
+    - match: '^.*$'
+      scope: string.unquoted.value.eno
