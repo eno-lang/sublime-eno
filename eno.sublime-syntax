@@ -36,7 +36,7 @@ contexts:
     - match: '(-{2,})(?!-)\s*(\S[^\n]*?)\s*$'
       push: block
       captures:
-        1: punctuation.definition.block.operator.eno
+        1: punctuation.definition.block.begin.operator.eno
         2: variable.other.block.name.eno
 
     # - value
@@ -211,7 +211,7 @@ contexts:
         3: variable.other.section.name.eno
         4: punctuation.definition.escape.end.operator.eno
         5: punctuation.definition.copy.operator.eno
-        6: variable.other.template.name.eno                
+        6: variable.other.template.name.eno
 
     # Invalid
     - match: ^.*$
@@ -220,7 +220,7 @@ contexts:
   block:
     - match: '^\s*(\1)\s*(\2)\s*$'
       captures:
-        1: punctuation.definition.block.operator.eno
+        1: punctuation.definition.block.end.operator.eno
         2: variable.other.block.name.eno
       pop: true
     - match: '^.*$'
