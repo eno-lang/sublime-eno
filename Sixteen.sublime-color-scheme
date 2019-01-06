@@ -1,0 +1,29 @@
+{
+  "rules": [
+    {
+      "name": "Fieldset Entry Name Customization",
+      "scope": "entity.name.fieldset-entry.eno",
+      "foreground": "var(blue)"
+    },
+    {
+      "name": "Name Customization",
+      "scope": "entity.name.block.eno, entity.name.element.eno, entity.name.field.eno, entity.name.section.eno",
+      "foreground": "var(red)"
+    },
+    {
+      "name": "Operator Customization",
+      "scope": "punctuation.definition.block.begin.eno, punctuation.definition.block.end.eno, punctuation.definition.continuation.eno, punctuation.definition.element.eno, punctuation.definition.list-item.eno, punctuation.definition.name.begin.eno, punctuation.definition.name.end.eno, punctuation.separator.field.eno, punctuation.separator.fieldset-entry.eno, punctuation.separator.template.eno",
+      "foreground": "var(blue2)"
+    },
+    {
+      "name": "Section Operator Customization",
+      "scope": "punctuation.definition.section.eno",
+      "foreground": "var(pink)"
+    },
+    {
+      "name": "Template Name Customization",
+      "scope": "entity.name.template.eno",
+      "foreground": "var(orange)"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "rules": [
+    {
+      "name": "Fieldset Entry Name Customization",
+      "scope": "entity.name.fieldset-entry.eno",
+      "foreground": "var(blue)"
+    },
+    {
+      "name": "Field/Fieldset Entry/Template Operator Customization",
+      "scope": "punctuation.separator.field.eno, punctuation.separator.fieldset-entry.eno, punctuation.separator.template.eno",
+      "foreground": "var(blue5)"
+    },
+    {
+      "name": "Section Name Customization",
+      "scope": "entity.name.section.eno",
+      "foreground": "var(orange)"
+    },
+    {
+      "name": "Section Operator Customization",
+      "scope": "punctuation.definition.section.eno",
+      "foreground": "var(pink)"
+    },
+    {
+      "name": "Template Name Customization",
+      "scope": "entity.name.template.eno",
+      "foreground": "var(red2)",
+      "font_style": "italic"
+    }
+  ]
+}
