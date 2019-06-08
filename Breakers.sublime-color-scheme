@@ -12,19 +12,12 @@
     },
     {
       "name": "Section Key Customization",
-      "scope": "entity.name.section.eno",
-      "foreground": "var(orange)"
-    },
-    {
-      "name": "Section Operator Customization",
-      "scope": "punctuation.definition.section.eno",
+      "scope": "entity.name.section.eno, entity.name.section.template.eno",
       "foreground": "var(pink)"
     },
-
     {
       "name": "Template Key Customization",
-      "scope": "entity.name.template.eno",
-      "foreground": "var(red2)",
+      "scope": "entity.name.element.template.eno, entity.name.section.template.eno",
       "font_style": "italic"
     }
   ]

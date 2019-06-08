@@ -1,24 +1,28 @@
 {
   "rules": [
     {
+      "name": "Fieldset Entry Key Customization",
+      "scope": "entity.name.fieldset-entry.eno",
+      "foreground": "var(purple)"
+    },
+    {
       "name": "Key Customization",
-      "scope": "entity.name.multiline-field.eno, entity.name.element.eno, entity.name.field.eno, entity.name.section.eno",
+      "scope": "entity.name.element.eno, entity.name.element.template.eno, entity.name.field.eno, entity.name.multiline-field.eno",
       "foreground": "var(red2)"
     },
     {
       "name": "Operator Customization",
-      "scope": "punctuation.definition.multiline-field.begin.eno, punctuation.definition.multiline-field.end.eno, punctuation.definition.continuation.eno, punctuation.definition.element.eno, punctuation.definition.list-item.eno, punctuation.definition.key.begin.eno, punctuation.definition.key.end.eno, punctuation.separator.field.eno, punctuation.separator.fieldset-entry.eno, punctuation.separator.template.eno",
+      "scope": "punctuation.definition.continuation.eno, punctuation.definition.element.eno, punctuation.definition.key.begin.eno, punctuation.definition.key.end.eno, punctuation.definition.list-item.eno, punctuation.definition.multiline-field.begin.eno, punctuation.definition.multiline-field.end.eno, punctuation.definition.section.eno, punctuation.separator.field.eno, punctuation.separator.fieldset-entry.eno, punctuation.separator.template.eno",
       "foreground": "var(blue)"
     },
     {
-      "name": "Section Operator Customization",
-      "scope": "punctuation.definition.section.eno",
-      "foreground": "var(purple)"
+      "name": "Section Key Customization",
+      "scope": "entity.name.section.eno, entity.name.section.template.eno",
+      "foreground": "var(orange)"
     },
     {
       "name": "Template Key Customization",
-      "scope": "entity.name.template.eno",
-      "foreground": "var(orange)",
+      "scope": "entity.name.element.template.eno, entity.name.section.template.eno",
       "font_style": "italic"
     }
   ]

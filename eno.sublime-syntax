@@ -51,7 +51,7 @@ contexts:
         1: punctuation.definition.section.eno
         2: entity.name.section.eno
         3: punctuation.separator.template.eno
-        4: entity.name.template.eno
+        4: entity.name.section.template.eno
 
     # | continuation OR \ continuation
     - match: '^\s*+(\\|\|)\s*+(\S.*?)?\s*$'
@@ -64,7 +64,7 @@ contexts:
       captures:
         1: entity.name.element.eno
         2: punctuation.separator.template.eno
-        3: entity.name.template.eno
+        3: entity.name.element.template.eno
 
     # `element`:
     - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(:)\s*$'
@@ -90,7 +90,7 @@ contexts:
         2: entity.name.element.eno
         3: punctuation.definition.key.end.eno
         4: punctuation.separator.template.eno
-        5: entity.name.template.eno
+        5: entity.name.element.template.eno
 
     # `entry` = value
     - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(=)\s*+(.+?)?\s*$'
@@ -109,7 +109,7 @@ contexts:
         3: entity.name.section.eno
         4: punctuation.definition.key.end.eno
         5: punctuation.separator.template.eno
-        6: entity.name.template.eno
+        6: entity.name.section.template.eno
 
     # Invalid
     - match: '^\s*+(\S.*?)\s*$'
