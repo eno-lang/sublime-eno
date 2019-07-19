@@ -6,6 +6,11 @@ scope: text.eno
 
 contexts:
   main:
+    # empty
+    - match: '^\s*+(?![>\-#=:\\|`])([^<=:]+?)\s*$'
+      captures:
+        1: entity.name.empty.eno
+
     # element:
     - match: '^\s*+(?![>\-#=:\\|`])([^<=:]+?)\s*(:)\s*$'
       captures:
@@ -65,6 +70,13 @@ contexts:
         1: entity.name.element.eno
         2: punctuation.separator.template.eno
         3: entity.name.element.template.eno
+
+    # `empty`
+    - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*$'
+      captures:
+        1: punctuation.definition.key.begin.eno
+        2: entity.name.empty.eno
+        3: punctuation.definition.key.end.eno
 
     # `element`:
     - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(:)\s*$'

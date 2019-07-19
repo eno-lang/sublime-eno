@@ -7,7 +7,7 @@
     },
     {
       "name": "Key Customization",
-      "scope": "entity.name.element.eno, entity.name.element.template.eno, entity.name.field.eno, entity.name.multiline-field.eno",
+      "scope": "entity.name.element.eno, entity.name.element.template.eno, entity.name.empty.eno, entity.name.field.eno, entity.name.multiline-field.eno",
       "foreground": "var(red)"
     },
     {
