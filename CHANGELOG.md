@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- Extend grammar and color schemes with support for empties `7762c22`
+
 ## 0.3.0
 
 - Improve visual distinction of sections `3a29b08`
