@@ -38,7 +38,7 @@ contexts:
         3: value.eno
 
     # -- multiline field
-    - match: '(--++)\s*+(\S.*?)\s*$'
+    - match: '^\s*+(--++)\s*+(\S.*?)\s*$'
       push: multiline-field
       captures:
         1: punctuation.definition.multiline-field.begin.eno
