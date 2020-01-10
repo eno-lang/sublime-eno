@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+
+- Fix missing recognition of leading spaces in multiline field begin lines `172721a`
+
 ## 0.4.0
 
 - Extend grammar and color schemes with support for empties `7762c22`
