@@ -1,24 +1,19 @@
 {
   "rules": [
     {
-      "name": "Fieldset Entry Key Customization",
-      "scope": "entity.name.fieldset-entry.eno",
+      "name": "Attribute key customization",
+      "scope": "entity.name.attribute.eno",
       "foreground": "var(blue)"
     },
     {
-      "name": "Field/Fieldset Entry/Copy Operator Customization",
-      "scope": "punctuation.separator.field.eno, punctuation.separator.fieldset-entry.eno, punctuation.separator.template.eno",
+      "name": "Field/Attribute customization",
+      "scope": "punctuation.separator.field.eno, punctuation.separator.attribute.eno",
       "foreground": "var(blue5)"
     },
     {
-      "name": "Section Key Customization",
-      "scope": "entity.name.section.eno, entity.name.section.template.eno",
+      "name": "Section key customization",
+      "scope": "entity.name.section.eno",
       "foreground": "var(red2)"
-    },
-    {
-      "name": "Template Key Customization",
-      "scope": "entity.name.element.template.eno, entity.name.section.template.eno",
-      "font_style": "italic"
     }
   ]
 }

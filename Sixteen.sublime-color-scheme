@@ -1,29 +1,24 @@
 {
   "rules": [
     {
-      "name": "Fieldset Entry Key Customization",
-      "scope": "entity.name.fieldset-entry.eno",
+      "name": "Attribute key customization",
+      "scope": "entity.name.attribute.eno",
       "foreground": "var(blue)"
     },
     {
-      "name": "Key Customization",
-      "scope": "entity.name.element.eno, entity.name.element.template.eno, entity.name.empty.eno, entity.name.field.eno, entity.name.multiline-field.eno",
+      "name": "Key customization",
+      "scope": "entity.name.element.eno, entity.name.flag.eno, entity.name.field.eno, entity.name.embed.eno",
       "foreground": "var(red)"
     },
     {
-      "name": "Operator Customization",
-      "scope": "punctuation.definition.continuation.eno, punctuation.definition.element.eno, punctuation.definition.key.begin.eno, punctuation.definition.key.end.eno, punctuation.definition.list-item.eno, punctuation.definition.multiline-field.begin.eno, punctuation.definition.multiline-field.end.eno, punctuation.definition.section.eno, punctuation.separator.field.eno, punctuation.separator.fieldset-entry.eno, punctuation.separator.template.eno",
+      "name": "Operator customization",
+      "scope": "punctuation.definition.key.begin.eno, punctuation.definition.key.end.eno, punctuation.definition.item.eno, punctuation.definition.embed.begin.eno, punctuation.definition.embed.end.eno, punctuation.definition.section.eno, punctuation.separator.field.eno, punctuation.separator.attribute.eno",
       "foreground": "var(blue2)"
     },
     {
-      "name": "Section Key Customization",
-      "scope": "entity.name.section.eno, entity.name.section.template.eno",
+      "name": "Section key customization",
+      "scope": "entity.name.section.eno",
       "foreground": "var(orange)"
-    },
-    {
-      "name": "Template Key Customization",
-      "scope": "entity.name.element.template.eno, entity.name.section.template.eno",
-      "font_style": "italic"
     }
   ]
 }

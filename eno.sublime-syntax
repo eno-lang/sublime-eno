@@ -6,22 +6,16 @@ scope: text.eno
 
 contexts:
   main:
-    # empty
+    # flag
     - match: '^\s*+(?![>\-#=:\\|`])([^<=:]+?)\s*$'
       captures:
-        1: entity.name.empty.eno
-
-    # element:
-    - match: '^\s*+(?![>\-#=:\\|`])([^<=:]+?)\s*(:)\s*$'
-      captures:
-        1: entity.name.element.eno
-        2: punctuation.definition.element.eno
+        1: entity.name.flag.eno
 
     # entry = value
     - match: '^\s*+(?![>\-#\\|`])([^<=:]+?)\s*(=)\s*+(\S.*?)?\s*$'
       captures:
-        1: entity.name.fieldset-entry.eno
-        2: punctuation.separator.fieldset-entry.eno
+        1: entity.name.attribute.eno
+        2: punctuation.separator.attribute.eno
         3: value.eno
 
     # > comment
@@ -31,63 +25,40 @@ contexts:
         1: punctuation.definition.comment.eno
 
     # field: value
-    - match: '^\s*+(?![>\-#\\|`])([^<=:]+?)\s*(:)\s*+(\S.*?)\s*$'
+    - match: '^\s*+(?![>\-#\\|`])([^<=:]+?)\s*(:)\s*+(\S.*?)?\s*$'
       captures:
         1: entity.name.field.eno
         2: punctuation.separator.field.eno
         3: value.eno
 
-    # -- multiline field
+    # -- embed
     - match: '^\s*+(--++)\s*+(\S.*?)\s*$'
-      push: multiline-field
+      push: embed
       captures:
-        1: punctuation.definition.multiline-field.begin.eno
-        2: entity.name.multiline-field.eno
+        1: punctuation.definition.embed.begin.eno
+        2: entity.name.embed.eno
 
     # - item
     - match: '^\s*+(-)(?!-)\s*+(\S.*?)?\s*$'
       captures:
-        1: punctuation.definition.list-item.eno
+        1: punctuation.definition.item.eno
         2: value.eno
 
-    # # section [[<]< template]
-    - match: '^\s*+(#++)\s*+([^\s<`][^<]*?)\s*(?:(<(?!<)|<<)\s*(\S.*?)\s*)?$'
+    # # section
+    - match: '^\s*+(#++)\s*+(\S.*?)\s*$'
       captures:
         1: punctuation.definition.section.eno
         2: entity.name.section.eno
-        3: punctuation.separator.template.eno
-        4: entity.name.section.template.eno
 
-    # | continuation OR \ continuation
-    - match: '^\s*+(\\|\|)\s*+(\S.*?)?\s*$'
-      captures:
-        1: punctuation.definition.continuation.eno
-        2: value.eno
-
-    # copy < template
-    - match: '^\s*+(?![>\-#\\|`])([^<=:]+?)\s*(<)\s*+(\S.*?)\s*$'
-      captures:
-        1: entity.name.element.eno
-        2: punctuation.separator.template.eno
-        3: entity.name.element.template.eno
-
-    # `empty`
+    # `flag`
     - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*$'
       captures:
         1: punctuation.definition.key.begin.eno
-        2: entity.name.empty.eno
+        2: entity.name.flag.eno
         3: punctuation.definition.key.end.eno
-
-    # `element`:
-    - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(:)\s*$'
-      captures:
-        1: punctuation.definition.key.begin.eno
-        2: entity.name.element.eno
-        3: punctuation.definition.key.end.eno
-        4: punctuation.definition.element.eno
 
     # `field`: value
-    - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(:)\s*+(\S.*?)\s*$'
+    - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(:)\s*+(\S.*?)?\s*$'
       captures:
         1: punctuation.definition.key.begin.eno
         2: entity.name.field.eno
@@ -95,43 +66,24 @@ contexts:
         4: punctuation.separator.field.eno
         5: value.eno
 
-    # `copy` < template
-    - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(<(?!<)|<<)\s*+(\S.*?)\s*$'
-      captures:
-        1: punctuation.definition.key.begin.eno
-        2: entity.name.element.eno
-        3: punctuation.definition.key.end.eno
-        4: punctuation.separator.template.eno
-        5: entity.name.element.template.eno
-
     # `entry` = value
     - match: '^\s*+(`++)\s*+((?:(?!\1).)+)\s*(\1)\s*+(=)\s*+(.+?)?\s*$'
       captures:
         1: punctuation.definition.key.begin.eno
-        2: entity.name.fieldset-entry.eno
+        2: entity.name.attribute.eno
         3: punctuation.definition.key.end.eno
-        4: punctuation.separator.fieldset-entry.eno
+        4: punctuation.separator.attribute.eno
         5: value.eno
-
-    # # `section` [< template]
-    - match: '^\s*+(#++)\s*+(`++)\s*+((?:(?!\2).)+)\s*(\2)\s*+(?:(<(?!<)|<<)\s*+(\S.*?)\s*)?$'
-      captures:
-        1: punctuation.definition.section.eno
-        2: punctuation.definition.key.begin.eno
-        3: entity.name.section.eno
-        4: punctuation.definition.key.end.eno
-        5: punctuation.separator.template.eno
-        6: entity.name.section.template.eno
 
     # Invalid
     - match: '^\s*+(\S.*?)\s*$'
       scope: invalid.illegal.eno
 
-  multiline-field:
+  embed:
     - match: '^\s*+(\1)(?!-)\s*+(\2)\s*$'
       captures:
-        1: punctuation.definition.multiline-field.end.eno
-        2: entity.name.multiline-field.eno
+        1: punctuation.definition.embed.end.eno
+        2: entity.name.embed.eno
       pop: true
     - match: '^.*$'
       scope: value.eno
