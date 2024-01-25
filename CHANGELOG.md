@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- Update syntax, scopes and theme customizations for latest spec `d5792de`
+
 ## 0.4.1
 
 - Fix missing recognition of leading spaces in multiline field begin lines `172721a`
